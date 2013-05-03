@@ -3,60 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <title>Contacts</title>
-    <style type="text/css">
-         /**
-         * Example of an initial loading indicator.
-         * It is recommended to keep this as minimal as possible to provide instant feedback
-         * while other resources are still being loaded for the first time
-         */
-        html, body {
-            height: 100%;
-            background-color: #1985D0
-        }
-
+    <style>
         #appLoadingIndicator {
             position: absolute;
             top: 50%;
-            margin-top: -15px;
+            left: 50%;
+            margin-top: -16px;
+            margin-left: -116px;
             text-align: center;
-            width: 100%;
-            height: 30px;
-            -webkit-animation-name: appLoadingIndicator;
-            -webkit-animation-duration: 0.5s;
-            -webkit-animation-iteration-count: infinite;
-            -webkit-animation-direction: linear;
+        }
+        #circleG{
+            width:232px;
         }
 
-        #appLoadingIndicator > * {
-            background-color: #FFFFFF;
-            display: inline-block;
-            height: 30px;
-            -webkit-border-radius: 15px;
-            margin: 0 5px;
-            width: 30px;
-            opacity: 0.8;
+        .circleG{
+        background-color:#EEEEEE;
+        float:left;
+        height:50px;
+        margin-left:27px;
+        width:50px;
+        -webkit-animation-name:bounce_circleG;
+        -webkit-animation-duration:0.6s;
+        -webkit-animation-iteration-count:infinite;
+        -webkit-animation-direction:linear;
+        -webkit-border-radius:33px;
+        animation-name:bounce_circleG;
+        animation-duration:0.6s;
+        animation-iteration-count:infinite;
+        animation-direction:linear;
+        border-radius:33px;
         }
 
-        @-webkit-keyframes appLoadingIndicator{
-            0% {
-                opacity: 0.8
-            }
-            50% {
-                opacity: 0
-            }
-            100% {
-                opacity: 0.8
-            }
+        #circleG_1{
+        -webkit-animation-delay:0.12s;
+        animation-delay:0.12s;
         }
-    </style>
+
+        #circleG_2{
+        -webkit-animation-delay:0.28s;
+        animation-delay:0.28s;
+        }
+
+        #circleG_3{
+        -webkit-animation-delay:0.36s;
+        animation-delay:0.36s;
+        }
+
+        @-webkit-keyframes bounce_circleG{
+        0%{
+        }
+
+        50%{
+        background-color:#1984D0}
+
+        100%{
+        }
+
+        }
+
+        @keyframes bounce_circleG{
+        0%{
+        }
+
+        50%{
+        background-color:#1984D0}
+
+        100%{
+        }
+
+        }
+
+</style>
+
     <!-- The line below must be kept intact for Sencha Command to build your application -->
     <script id="microloader" type="text/javascript" src="touch/microloader/development.js"></script>
 </head>
 <body>
     <div id="appLoadingIndicator">
-        <div></div>
-        <div></div>
-        <div></div>
+ <div id="circleG">
+<div id="circleG_1" class="circleG">
+</div>
+<div id="circleG_2" class="circleG">
+</div>
+<div id="circleG_3" class="circleG">
+</div>
+</div>
     </div>
 </body>
 </html>
+
