@@ -8,14 +8,18 @@ Ext.define('Contacts.store.ContactStore', {
 			type: 'ajax',
 			api: {
 				read: 'http://trevorbrindle.com/api/get.php',
+				create: 'http://trevorbrindle.com/api/post.php',
 			},
 			reader: {
 				type: 'json',
 				rootProperty: 'contacts',
 			},
+			writer: {
+				//encode: true,
+			}
 		},
 		listeners: {
-			load: "onLoad"
+			load: "onLoad",
 		}
 	},
 
@@ -33,5 +37,5 @@ Ext.define('Contacts.store.ContactStore', {
         else{
             Ext.Msg.alert("Error", "Unable to Load Store", Ext.EmptyFn)
         }
-	}
+	},
 });
