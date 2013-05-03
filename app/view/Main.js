@@ -6,18 +6,19 @@ Ext.define('Contacts.view.Main', {
         'Ext.dataview.List',
         'Ext.form.FieldSet',
         'Ext.field.Email',
-        'Ext.field.Number'
+        'Ext.field.Number',
+        'Ext.plugin.PullRefresh'
     ],
     config: {
+        id: 'tabPanel',
         tabBarPosition: 'bottom',
 
         items: [
             {
                 title: 'List',
-                iconCls: 'home',
+                iconCls: 'info',
                 layout: 'fit',
                 styleHtmlContent: true,
-
                 items:  [
                     {
                         docked: 'top',
@@ -31,15 +32,17 @@ Ext.define('Contacts.view.Main', {
             },
             {
                 title: 'Form',
-                iconCls: 'action',
-                 layout: 'fit',
-
+                iconCls: 'settings',
+                layout: 'fit',
                 items: [
                     {
                         docked: 'top',
                         xtype: 'toolbar',
                         title: 'Contact Form',
                         items: [
+                            {
+                                xtype: 'spacer'
+                            },
                             {
                                 xtype: 'button',
                                 ui: 'confirm',
@@ -54,6 +57,8 @@ Ext.define('Contacts.view.Main', {
                                         console.log(store)
                                         form.reset()
                                         store.sync()
+                                        var tabPanel = Ext.ComponentQuery.query('#tabPanel')[0]
+                                        tabPanel.setActiveItem(0)
                                     } 
                                     else {
                                         var message="";

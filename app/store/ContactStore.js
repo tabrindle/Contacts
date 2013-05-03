@@ -4,11 +4,19 @@ Ext.define('Contacts.store.ContactStore', {
 	config: {
 		autoLoad: true,
 		model: 'Contacts.model.ContactModel',
+		sorters: 'last',
+		grouper: {
+			groupFn: function(record) {
+				var letter = record.get('last')[0].toUpperCase()
+				return letter;
+			}
+	    },
 		proxy: {
 			type: 'ajax',
 			api: {
 				read: 'http://trevorbrindle.com/api/get.php',
 				create: 'http://trevorbrindle.com/api/post.php',
+				destroy: 'http://trevorbrindle.com/api/delete.php'
 			},
 			reader: {
 				type: 'json',
@@ -29,13 +37,12 @@ Ext.define('Contacts.store.ContactStore', {
 			//console.log(records)
 
 			// Destroy the #appLoadingIndicator element
-       		Ext.fly('appLoadingIndicator').destroy();
-
-        	// Initialize the main view
-        	Ext.Viewport.add(Ext.create('Contacts.view.Main'));
+       		if(Ext.fly('appLoadingIndicator')){
+       			Ext.fly('appLoadingIndicator').destroy();
+       		}
 		}
         else{
-            Ext.Msg.alert("Error", "Unable to Load Store", Ext.EmptyFn)
+            Ext.Msg.alert("Error", "Unable to Load Contacts", Ext.EmptyFn)
         }
 	},
 });

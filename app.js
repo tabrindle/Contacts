@@ -19,5 +19,6 @@ Ext.application({
     models: ['ContactModel'],
 
     launch: function() {
+        Ext.Viewport.add(Ext.create('Contacts.view.Main'))
     }
 });
